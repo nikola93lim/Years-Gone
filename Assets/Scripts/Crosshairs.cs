@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Crosshairs : MonoBehaviour 
 {
@@ -45,12 +46,14 @@ public class Crosshairs : MonoBehaviour
 
     private void UpdatePosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Plane groundPlane = new Plane(Vector3.up, Vector3.up * _gunController.GunSpawnTransform.position.y);
+        float rayDistance;
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, _groundLayerMask))
+        if (groundPlane.Raycast(ray, out rayDistance))
         {
-            float newY = _gunController.GunSpawnTransform.position.y;
-            transform.position = new Vector3(hitInfo.point.x, newY, hitInfo.point.z);
+            Vector3 point = ray.GetPoint(rayDistance);
+            transform.position = point;
         }
     }
 
