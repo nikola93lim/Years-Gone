@@ -7,13 +7,29 @@ public class GunController : MonoBehaviour
     [SerializeField] private Transform _gunSpawnTransform;
     private Gun _equippedGun;
 
+    private InputReader _inputReader;
+
     public Transform GunSpawnTransform {  get { return _gunSpawnTransform; } }
 
     private void Awake()
     {
+        _inputReader = GetComponent<InputReader>();
+
         if (_startingGun != null )
         {
             EquipGun(_startingGun);
+        }
+    }
+
+    private void Update()
+    {
+        if (_inputReader.Fire)
+        {
+            OnTriggerHold();
+        }
+        else
+        {
+            OnTriggerRelease();
         }
     }
 

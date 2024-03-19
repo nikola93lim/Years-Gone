@@ -4,45 +4,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-[RequireComponent(typeof(GunController))]
 public class InputReader : MonoBehaviour
 {
     private PlayerInput _playerInput;
 
     private InputAction _moveAction;
+    private InputAction _fireAction;
 
     public Vector2 Move => _moveAction.ReadValue<Vector2>();
+    public bool Fire => _fireAction.ReadValue<float>() > 0f;
 
     [SerializeField] private LayerMask _groundLayerMask;
-    private GunController _gunController;
-
-    private float _speed = 10f;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _moveAction = _playerInput.actions["Move"];
-
-        _gunController = GetComponent<GunController>();
+        _fireAction = _playerInput.actions["Fire"];
     }
 
     private void Update()
     {
        // HandleLookInput();
-        HandleShootingInput();
-    }
-
-    private void HandleShootingInput()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            _gunController.OnTriggerHold();
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            _gunController.OnTriggerRelease();
-        }
     }
 
     private void HandleLookInput()

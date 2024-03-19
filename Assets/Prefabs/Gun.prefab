@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441814cbae33f4a44a5666941bd80567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMode: 0
+  _fireMode: 2
   _muzzle: {fileID: 937164715869859414}
   _bullet: {fileID: -3740769342065323988, guid: eb11cb1f2613da34d83467c7ab870999,
     type: 3}
