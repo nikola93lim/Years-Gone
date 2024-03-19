@@ -9,19 +9,25 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _velocity;
 
+    private InputReader _inputReader;
+
+    private float _speed = 10f;
+
     private void Awake()
     {
+        _inputReader = GetComponent<InputReader>();
         _rb = GetComponent<Rigidbody>();
     }
 
     public void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _velocity * Time.fixedDeltaTime);
+        SetVelocity(_inputReader.Move);
+        _rb.MovePosition(_rb.position + _speed * Time.fixedDeltaTime * _velocity.normalized);
     }
 
-    public void Move(Vector3 velocity)
+    public void SetVelocity(Vector2 input)
     {
-        _velocity = velocity;
+        _velocity = new Vector3(input.x, 0f, input.y);
     }
 
     public void LookAt(Vector3 lookAtPoint)

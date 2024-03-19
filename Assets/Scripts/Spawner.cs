@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         _mapGenerator = FindObjectOfType<MapGenerator>();
-        _playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
+        _playerHealth = FindObjectOfType<InputReader>().GetComponent<Health>();
 
         _playerHealth.OnDeath += OnPlayerDeath;
 

@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(PlayerController))]
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(GunController))]
-public class Player : MonoBehaviour
+public class InputReader : MonoBehaviour
 {
+    private PlayerInput _playerInput;
+
+    private InputAction _moveAction;
+
+    public Vector2 Move => _moveAction.ReadValue<Vector2>();
+
     [SerializeField] private LayerMask _groundLayerMask;
-    private PlayerController _playerController;
     private GunController _gunController;
 
     private float _speed = 10f;
 
     private void Awake()
     {
-        _playerController = GetComponent<PlayerController>();
+        _playerInput = GetComponent<PlayerInput>();
+        _moveAction = _playerInput.actions["Move"];
+
         _gunController = GetComponent<GunController>();
     }
 
     private void Update()
     {
-        HandleMovementInput();
-        HandleLookInput();
+       // HandleLookInput();
         HandleShootingInput();
     }
 
@@ -43,14 +51,7 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, _groundLayerMask))
         {
-            _playerController.LookAt(hitInfo.point);
+            //_playerController.LookAt(hitInfo.point);
         }
-    }
-
-    private void HandleMovementInput()
-    {
-        Vector3 inputValue = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        Vector3 moveVelocity = _speed * inputValue.normalized;
-        _playerController.Move(moveVelocity);
     }
 }

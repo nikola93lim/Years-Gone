@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     {
         _currentState = State.Idle;
         _health.OnDeath += OnDeath;
-        _target = FindObjectOfType<Player>().transform;
+        _target = FindObjectOfType<InputReader>().transform;
 
         if (_target == null) return;
 
