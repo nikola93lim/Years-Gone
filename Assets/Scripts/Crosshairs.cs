@@ -7,7 +7,7 @@ public class Crosshairs : MonoBehaviour
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private LayerMask _enemyLayerMask;
 
-    [SerializeField] private GunController _gunController;
+    [SerializeField] private WeaponController _gunController;
     [SerializeField] private SpriteRenderer _dot;
     [SerializeField] private Color _targetDotColour = Color.red;
 

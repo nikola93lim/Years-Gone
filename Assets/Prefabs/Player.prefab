@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 470755974079974644}
   - component: {fileID: 3810780694836771805}
   - component: {fileID: 4995817099187161308}
-  - component: {fileID: 7456791863505661968}
-  - component: {fileID: 5537753481382262108}
   - component: {fileID: 5656263102617713469}
   - component: {fileID: 3165955449543746152}
   - component: {fileID: 2287611601586238994}
+  - component: {fileID: 8323607077383383663}
+  - component: {fileID: 8603314016561487324}
+  - component: {fileID: 6955483554049984349}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -79,36 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02eb80a8f9514214d9b952efcff94494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7456791863505661968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137921366799394453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca528f72f35b13740a41ff17eadc47ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &5537753481382262108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137921366799394453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed595beaafa6f248a9dbeb1617e9a29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startingGun: {fileID: 1395828180056050614, guid: b0172af5a3d258140bab120a49cda18f,
-    type: 3}
-  _gunSpawnTransform: {fileID: 3344026010613274012}
+  _speed: 10
 --- !u!136 &5656263102617713469
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -159,6 +134,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathParticleSystem: {fileID: 8350531174545190116, guid: 6c1e0b24d7ccafe46aadd03d561a113d,
     type: 3}
+  _bloodSplatterParticleSystem: {fileID: 3548588485384254794, guid: bb1f8b2de273c5c4380ca9129f696a86,
+    type: 3}
+--- !u!114 &8323607077383383663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137921366799394453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 07557d90e00656049b3e419e640812e9,
+    type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &8603314016561487324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137921366799394453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652a031e82fb4624a8bf7e6bbcd3bdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &6955483554049984349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137921366799394453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702090b9c8c532243b69b923f8f0d9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponSpawnTransform: {fileID: 3344026010613274012}
+  _weaponFactory: {fileID: 11400000, guid: b3e80055873b5cd45898e19e4659ad93, type: 2}
 --- !u!1 &5152193491985664791
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344026010613274012}
   m_Layer: 0
-  m_Name: GunSpawnTransform
+  m_Name: WeaponSpawnTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

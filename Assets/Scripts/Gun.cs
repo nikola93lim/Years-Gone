@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class Gun : MonoBehaviour 
 {
     public enum FireMode { Auto, Burst, Single}
