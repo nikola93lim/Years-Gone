@@ -8,12 +8,12 @@ using UnityEngine.InputSystem.XR;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask _groundLayerMask;
+    [SerializeField] private float _speed = 10f;
 
     private Rigidbody _rb;
     private InputReader _inputReader;
 
     private Vector3 _velocity;
-    private float _speed = 10f;
 
     private void Awake()
     {
@@ -35,17 +35,6 @@ public class PlayerController : MonoBehaviour
     private void SetVelocity(Vector2 input)
     {
         _velocity = new Vector3(input.x, 0f, input.y);
-    }
-
-    private void Look()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, _groundLayerMask))
-        {
-            Vector3 adjustedLookAtPoint = new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z);
-            transform.LookAt(adjustedLookAtPoint);
-        }
     }
 
     private void HandleLookInput()
