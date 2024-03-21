@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbdc5aa2d6a1d641901b095b38ebd16, type: 3}
-  m_Name: PistolFactory
+  m_Script: {fileID: 11500000, guid: 4bb012e67d5228e4bb6e601e5c9d3172, type: 3}
+  m_Name: RPG Factory
   m_EditorClassIdentifier: 
-  _weaponPrefab: {fileID: 1257442187119756762, guid: b0172af5a3d258140bab120a49cda18f,
+  _weaponPrefab: {fileID: 5872191589440665234, guid: b2a15b3769c80b84db8f969d9c47121a,
     type: 3}
-  _weaponStrategy: {fileID: 11400000, guid: 77db3e5db2218c74dab8476073d26406, type: 2}
+  _weaponStrategy: {fileID: 11400000, guid: d56f56a6eec608c42bfc096d1efb5591, type: 2}

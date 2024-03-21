@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour 
 {
+    public event Action Callback;
+
     [SerializeField] private LayerMask _collisionMask;
     [SerializeField] private ParticleSystem _objectHitParticleSystem;
     [SerializeField] private float _moveSpeed = 30f;
@@ -22,9 +24,16 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        Callback?.Invoke();
+
         float moveDistance = _moveSpeed * Time.deltaTime;
-        CheckForCollision(moveDistance);
+        //CheckForCollision(moveDistance);
         transform.Translate(moveDistance * Vector3.forward);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        OnHitObject(other);
     }
 
     private void CheckForCollision(float moveDistance)

@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 
-public abstract class WeaponFactory : ScriptableObject
+[CreateAssetMenu(fileName = "WeaponFactory", menuName = "Weapon Factory/Weapon")]
+public class WeaponFactory : ScriptableObject
 {
-    [SerializeField] protected BaseWeapon _weaponPrefab;
-    [SerializeField] protected WeaponStrategy _weaponStrategy;
+    [SerializeField] private BaseWeapon _weaponPrefab;
+    [SerializeField] private WeaponStrategy _weaponStrategy;
 
-    public abstract IWeapon CreateWeapon(Transform spawnPoint);
+    public BaseWeapon CreateWeapon(Transform spawnPoint)
+    {
+        BaseWeapon newWeapon = Instantiate(_weaponPrefab, spawnPoint.position, spawnPoint.rotation);
+        newWeapon.transform.parent = spawnPoint;
+        newWeapon.SetWeaponStrategy(_weaponStrategy);
+        return newWeapon;
+    }
 }

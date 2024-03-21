@@ -18,4 +18,22 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         _nextShotTime = 0f;
     }
+
+    public abstract void Shoot();
+
+    public void SetWeaponStrategy(WeaponStrategy strategy)
+    {
+        _weaponStrategy = strategy;
+    }
+
+    public void OnTriggerHold()
+    {
+        Shoot();
+        _triggerReleasedSinceLastShot = false;
+    }
+
+    public void OnTriggerRelease()
+    {
+        _triggerReleasedSinceLastShot = true;
+    }
 }

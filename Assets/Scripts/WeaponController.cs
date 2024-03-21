@@ -6,7 +6,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Transform _weaponSpawnTransform;
 
     [SerializeField] WeaponFactory _weaponFactory;
-    private IWeapon _weapon;
+    private BaseWeapon _weapon;
 
     private InputReader _inputReader;
 
