@@ -124,7 +124,7 @@ MonoBehaviour:
     m_Bits: 384
   _objectHitParticleSystem: {fileID: 74078499623404260, guid: e5bf3e125f84f544fa3aaad2dfe14ac9,
     type: 3}
-  _moveSpeed: 4
+  _moveSpeed: 20
   _damage: 10
   _lifetime: 10
 --- !u!96 &8488582377183084929

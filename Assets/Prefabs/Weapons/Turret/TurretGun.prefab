@@ -295,7 +295,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51686a86766f7d84580357aaf63ae797, type: 2}
+  - {fileID: 2100000, guid: c9d432541eeebf745adc09e1a050f7fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -338,6 +338,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4450817512451442750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8308719429989273874}
+  m_Layer: 0
+  m_Name: Shell Ejector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8308719429989273874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450817512451442750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.142, y: 0, z: -0.147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4164546077930564118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5594054514811321179
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +497,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4164546077930564118}
   - component: {fileID: 1107410990671554775}
-  - component: {fileID: 5872191589440665234}
+  - component: {fileID: 8504182877277392246}
   m_Layer: 0
-  m_Name: RPG
+  m_Name: TurretGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,6 +520,7 @@ Transform:
   m_Children:
   - {fileID: 68865169422331411}
   - {fileID: 937164715869859414}
+  - {fileID: 8308719429989273874}
   - {fileID: 3233395558870323389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -514,7 +546,7 @@ MonoBehaviour:
   _spriteRenderers:
   - {fileID: 1666549314469434504}
   - {fileID: 2467822162726323625}
---- !u!114 &5872191589440665234
+--- !u!114 &8504182877277392246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -523,7 +555,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8661330683576570197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232f740551b6f48499b187951b4f6b20, type: 3}
+  m_Script: {fileID: 11500000, guid: acaa1cde29f44e24aa3f0cba38950810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzles:
@@ -533,6 +565,3 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 1107410990671554775}
   _timeBetweenShots: 3
   _muzzleVelocity: 15
-  _enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 384

@@ -49,7 +49,24 @@ public class MapGenerator : MonoBehaviour
         System.Random prng = new System.Random(_currentMap._seed);
 
         GetComponent<BoxCollider>().size = new Vector3(_currentMap._mapSize.x * _tileSize, 0.05f, _currentMap._mapSize.y * _tileSize);
+        CreateAllTilesCoordinates();
 
+        _allOpenTilesCoords = new List<Coord>(_allTilesCoords);
+        _shuffledTilesCoords = new Queue<Coord>(Utility.ShuffleArray(_allTilesCoords.ToArray(), _currentMap._seed));
+
+        Transform holder = CreateHolderParent();
+        CreateTiles(holder);
+        CreateObstacles(prng, holder);
+
+        _shuffledOpenTilesCoords = new Queue<Coord>(Utility.ShuffleArray(_allOpenTilesCoords.ToArray(), _currentMap._seed));
+
+        CreateNavMeshMasks(holder);
+
+        _navMeshFloor.localScale = new Vector3(_maxMapSize.x, _maxMapSize.y) * _tileSize;
+    }
+
+    private void CreateAllTilesCoordinates()
+    {
         _allTilesCoords = new List<Coord>();
         for (int x = 0; x < _currentMap._mapSize.x; x++)
         {
@@ -58,33 +75,10 @@ public class MapGenerator : MonoBehaviour
                 _allTilesCoords.Add(new Coord(x, y));
             }
         }
+    }
 
-        _allOpenTilesCoords = new List<Coord>(_allTilesCoords);
-        _shuffledTilesCoords = new Queue<Coord>(Utility.ShuffleArray(_allTilesCoords.ToArray(), _currentMap._seed));
-
-        string tileHolderName = "Generated Map";
-        Transform tileHolder = transform.Find(tileHolderName);
-
-        if (tileHolder != null)
-        {
-            DestroyImmediate(tileHolder.gameObject);
-        }
-
-        Transform holder = new GameObject(tileHolderName).transform;
-        holder.parent = transform;
-
-        for (int x = 0; x < _currentMap._mapSize.x; x++)
-        {
-            for (int y = 0; y < _currentMap._mapSize.y; y++)
-            {
-                Vector3 tilePosition = CoordToPosition(x, y);
-                Transform newTile = Instantiate(_tilePrefab, tilePosition, Quaternion.Euler(Vector3.right * 90f));
-                newTile.transform.localScale = (1f - _tileOutlinePercentage) * _tileSize * Vector3.one;
-                newTile.parent = holder;
-                _tileMap[x, y] = newTile;
-            }
-        }
-
+    private void CreateObstacles(System.Random prng, Transform holder)
+    {
         bool[,] obstacleMap = new bool[_currentMap._mapSize.x, _currentMap._mapSize.y];
         int currentObstacleCount = 0;
 
@@ -120,12 +114,36 @@ public class MapGenerator : MonoBehaviour
                 currentObstacleCount--;
             }
         }
+    }
 
-        _shuffledOpenTilesCoords = new Queue<Coord>(Utility.ShuffleArray(_allOpenTilesCoords.ToArray(), _currentMap._seed));
+    private void CreateTiles(Transform holder)
+    {
+        for (int x = 0; x < _currentMap._mapSize.x; x++)
+        {
+            for (int y = 0; y < _currentMap._mapSize.y; y++)
+            {
+                Vector3 tilePosition = CoordToPosition(x, y);
+                Transform newTile = Instantiate(_tilePrefab, tilePosition, Quaternion.Euler(Vector3.right * 90f));
+                newTile.transform.localScale = (1f - _tileOutlinePercentage) * _tileSize * Vector3.one;
+                newTile.parent = holder;
+                _tileMap[x, y] = newTile;
+            }
+        }
+    }
 
-        CreateNavMeshMasks(holder);
+    private Transform CreateHolderParent()
+    {
+        string tileHolderName = "Generated Map";
+        Transform tileHolder = transform.Find(tileHolderName);
 
-        _navMeshFloor.localScale = new Vector3(_maxMapSize.x, _maxMapSize.y) * _tileSize;
+        if (tileHolder != null)
+        {
+            Destroy(tileHolder.gameObject);
+        }
+
+        Transform holder = new GameObject(tileHolderName).transform;
+        holder.parent = transform;
+        return holder;
     }
 
     private void CreateNavMeshMasks(Transform holder)

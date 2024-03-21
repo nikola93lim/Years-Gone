@@ -24,26 +24,13 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward);
         Callback?.Invoke();
-
-        float moveDistance = _moveSpeed * Time.deltaTime;
-        //CheckForCollision(moveDistance);
-        transform.Translate(moveDistance * Vector3.forward);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         OnHitObject(other);
-    }
-
-    private void CheckForCollision(float moveDistance)
-    {
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, moveDistance, _collisionMask, QueryTriggerInteraction.Collide)) 
-        {
-            OnHitObject(hitInfo.collider);
-        }
     }
 
     private void OnHitObject(Collider collider)

@@ -14,7 +14,7 @@ public abstract class BaseWeapon : MonoBehaviour
     protected int _burstCount;
     protected float _nextShotTime;
 
-    private void Start()
+    protected virtual void Start()
     {
         _nextShotTime = 0f;
     }

@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private Wave[] _waves;
     [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Turret _turretPrefab;
 
     private MapGenerator _mapGenerator;
     private Health _playerHealth;
@@ -38,6 +39,18 @@ public class Spawner : MonoBehaviour
         _nextCampingCheckTime = Time.time + _timeBetweenCampingChecks;
         _oldCampingPosition = _playerHealth.transform.position;
         NextWave();
+        //SpawnTurrets(_currentWave.turretCount);
+
+    }
+
+    private void SpawnTurrets(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Transform openTile = _mapGenerator.GetRandomOpenTile();
+            Turret newTurret = Instantiate(_turretPrefab, openTile.position, Quaternion.identity);
+            newTurret.OnDeath += OnEnemyDeath;
+        }
     }
 
     private void OnPlayerDeath(Vector3 hitDirection)
@@ -91,10 +104,10 @@ public class Spawner : MonoBehaviour
         }
 
         Enemy spawnedEnemy = Instantiate(_enemyPrefab, openTile.position + Vector3.up, Quaternion.identity);
-        spawnedEnemy.OnDeath += SpawnedEnemy_OnDeath;
+        spawnedEnemy.OnDeath += OnEnemyDeath;
     }
 
-    private void SpawnedEnemy_OnDeath(Vector3 hitDirection)
+    private void OnEnemyDeath(Vector3 hitDirection)
     {
         _enemiesRemainingAlive--;
 
@@ -111,11 +124,13 @@ public class Spawner : MonoBehaviour
         _currentWave = _waves[_currentWaveIndex];
         
         _enemiesRemainingToSpawn = _currentWave.enemyCount;
-        _enemiesRemainingAlive = _currentWave.enemyCount;
+        _enemiesRemainingAlive = _currentWave.enemyCount + _currentWave.turretCount;
 
+        
         OnNewWave?.Invoke(_currentWaveIndex);
         _currentWaveIndex++;
 
+        SpawnTurrets(_currentWave.turretCount);
         ResetPlayerPosition();
     }
 
@@ -127,6 +142,7 @@ public class Spawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
+        public int turretCount;
         public int enemyCount;
         public float timeBetweenSpawns;
     }

@@ -8,31 +8,26 @@ public class HomingMissileWeaponStrategy : WeaponStrategy
     [SerializeField] private LayerMask _enemyLayerMask;
     [SerializeField] private Projectile _missilePrefab;
     [SerializeField] private ParticleSystem _fireBackParticleSystem;
+    [SerializeField] private float _range;
 
-    public override bool TryFire(Transform projectileOrigin, Transform shellOrigin, float muzzleVelocity)
+    public override void Fire(Transform projectileOrigin, Transform shellOrigin, Transform target, float muzzleVelocity)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, _enemyLayerMask))
+        if (Vector3.Distance(projectileOrigin.position, target.position) > _range) 
         {
-            Transform target = hitInfo.transform;
-
-            Projectile missile = Instantiate(_missilePrefab, projectileOrigin.position, projectileOrigin.rotation);
-            missile.SetSpeed(muzzleVelocity);
-
-            missile.Callback += () =>
-            {
-
-                if (target == null) return;
-                Vector3 directionToTarget = (target.position - missile.transform.position).normalized;
-
-                Quaternion rotation = Quaternion.LookRotation(directionToTarget);
-                missile.transform.rotation = Quaternion.Slerp(missile.transform.rotation, rotation, _trackingSpeed * Time.deltaTime);
-            };
-
-            return true;
+            Debug.Log("Target not in range!");
+            return;
         }
 
-        return false;
+        Projectile missile = Instantiate(_missilePrefab, projectileOrigin.position, projectileOrigin.rotation);
+        missile.SetSpeed(muzzleVelocity);
+
+        missile.Callback += () =>
+        {
+            if (target == null) return;
+            Vector3 directionToTarget = (target.position - missile.transform.position).normalized;
+
+            Quaternion rotation = Quaternion.LookRotation(directionToTarget);
+            missile.transform.rotation = Quaternion.Slerp(missile.transform.rotation, rotation, _trackingSpeed * Time.deltaTime);
+        };
     }
 }
