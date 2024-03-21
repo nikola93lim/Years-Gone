@@ -8,10 +8,10 @@ public class RPG : BaseWeapon
         {
             foreach (Transform muzzle in _muzzles)
             {
-                _weaponStrategy.Fire(muzzle, _shellEjector, _muzzleVelocity);
+                if (!_weaponStrategy.TryFire(muzzle, _shellEjector, _muzzleVelocity)) return;
+                _muzzleFlash.Activate();
+                _nextShotTime = Time.time + _timeBetweenShots;
             }
-            _muzzleFlash.Activate();
-            _nextShotTime = Time.time + _timeBetweenShots;
         }
     }
 }

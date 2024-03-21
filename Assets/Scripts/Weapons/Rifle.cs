@@ -8,7 +8,7 @@ public class Rifle : BaseWeapon
         {
             foreach (Transform muzzle in _muzzles)
             {
-                _weaponStrategy.Fire(muzzle, _shellEjector, _muzzleVelocity);
+                _weaponStrategy.TryFire(muzzle, _shellEjector, _muzzleVelocity);
             }
             _muzzleFlash.Activate();
             _nextShotTime = Time.time + _timeBetweenShots;

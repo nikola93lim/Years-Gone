@@ -2,5 +2,5 @@
 
 public abstract class WeaponStrategy : ScriptableObject
 {
-    public abstract void Fire(Transform projectileOrigin, Transform shellOrigin, float muzzleVelocity);
+    public abstract bool TryFire(Transform projectileOrigin, Transform shellOrigin, float muzzleVelocity);
 }
