@@ -2473,7 +2473,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 0.05, z: 20}
+  m_Size: {x: 20, y: 0, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &454053867
 MonoBehaviour:
@@ -3767,9 +3767,9 @@ MonoBehaviour:
   - turretCount: 2
     enemyCount: 3
     timeBetweenSpawns: 1
-  _enemyPrefab: {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708,
+  _zombiePrefab: {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708,
     type: 3}
-  _turretPrefab: {fileID: 1233212920393177425, guid: b9580b05a87e9ce428e1b0aa9aad090f,
+  _turretPrefab: {fileID: 4239273790939271706, guid: b9580b05a87e9ce428e1b0aa9aad090f,
     type: 3}
 --- !u!4 &761251619
 Transform:
@@ -10379,6 +10379,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _startingHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810780694836771805, guid: 6b127bf677c991e47a64c9b98fdd65e8,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656263102617713469, guid: 6b127bf677c991e47a64c9b98fdd65e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}

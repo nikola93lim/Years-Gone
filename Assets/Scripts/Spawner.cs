@@ -7,8 +7,8 @@ public class Spawner : MonoBehaviour
     public event Action<int> OnNewWave;
 
     [SerializeField] private Wave[] _waves;
-    [SerializeField] private Enemy _enemyPrefab;
-    [SerializeField] private Turret _turretPrefab;
+    [SerializeField] private Enemy _zombiePrefab;
+    [SerializeField] private Enemy _turretPrefab;
 
     private MapGenerator _mapGenerator;
     private Health _playerHealth;
@@ -39,8 +39,6 @@ public class Spawner : MonoBehaviour
         _nextCampingCheckTime = Time.time + _timeBetweenCampingChecks;
         _oldCampingPosition = _playerHealth.transform.position;
         NextWave();
-        //SpawnTurrets(_currentWave.turretCount);
-
     }
 
     private void SpawnTurrets(int count)
@@ -48,7 +46,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Transform openTile = _mapGenerator.GetRandomOpenTile();
-            Turret newTurret = Instantiate(_turretPrefab, openTile.position, Quaternion.identity);
+            Enemy newTurret = Instantiate(_turretPrefab, openTile.position, Quaternion.identity);
             newTurret.OnDeath += OnEnemyDeath;
         }
     }
@@ -103,8 +101,8 @@ public class Spawner : MonoBehaviour
             yield return null;
         }
 
-        Enemy spawnedEnemy = Instantiate(_enemyPrefab, openTile.position + Vector3.up, Quaternion.identity);
-        spawnedEnemy.OnDeath += OnEnemyDeath;
+        Enemy spawnedZombie = Instantiate(_zombiePrefab, openTile.position + Vector3.up, Quaternion.identity);
+        spawnedZombie.OnDeath += OnEnemyDeath;
     }
 
     private void OnEnemyDeath(Vector3 hitDirection)

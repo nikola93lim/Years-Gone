@@ -19,3 +19,4 @@ MonoBehaviour:
   _missilePrefab: {fileID: -3740769342065323988, guid: 199fc7fb6fbd2bd4da6c7a76139412a9,
     type: 3}
   _fireBackParticleSystem: {fileID: 0}
+  _range: 15

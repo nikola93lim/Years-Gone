@@ -36,4 +36,9 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         _triggerReleasedSinceLastShot = true;
     }
+
+    public float GetTimeBetweenShots()
+    {
+        return _timeBetweenShots;
+    }
 }

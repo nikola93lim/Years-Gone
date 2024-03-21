@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 2435739517899216919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.372}
+  m_LocalPosition: {x: 0, y: 0, z: 0.521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -334,7 +334,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -565,3 +565,9 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 1107410990671554775}
   _timeBetweenShots: 3
   _muzzleVelocity: 15
+  _range: 8
+  _rotationSpeed: 70
+  _checkForTargetInterval: 1
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048

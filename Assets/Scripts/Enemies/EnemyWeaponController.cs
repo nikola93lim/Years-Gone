@@ -7,7 +7,8 @@ public class EnemyWeaponController : MonoBehaviour
     [SerializeField] WeaponFactory _weaponFactory;
     private BaseWeapon _weapon;
 
-    private float _fireTimer;
+    private float _nextShotTime;
+    private float _timeBetweenShots;
 
     private void Start()
     {
@@ -16,15 +17,16 @@ public class EnemyWeaponController : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > _fireTimer)
+        if (Time.time > _nextShotTime)
         {
             _weapon.Shoot();
-            _fireTimer = Time.time + 3f;
+            _nextShotTime = Time.time + _timeBetweenShots;
         }
     }
 
     public void EquipWeapon(WeaponFactory weaponFactory)
     {
         _weapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
+        _timeBetweenShots = _weapon.GetTimeBetweenShots();
     }
 }

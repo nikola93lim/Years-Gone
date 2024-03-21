@@ -47,7 +47,7 @@ public class Crosshairs : MonoBehaviour
     private void UpdatePosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Plane groundPlane = new Plane(Vector3.up, Vector3.up * 0.5f);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.up);
         float rayDistance;
 
         if (groundPlane.Raycast(ray, out rayDistance))

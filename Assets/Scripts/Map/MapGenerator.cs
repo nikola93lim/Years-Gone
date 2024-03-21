@@ -29,6 +29,9 @@ public class MapGenerator : MonoBehaviour
     private List<Coord> _allOpenTilesCoords;
     private Queue<Coord> _shuffledOpenTilesCoords;
 
+    // make tiles of type Tile and add a bool to mark tiles in the editor where turrets should be spawned
+    // when you generate a map, go through all tiles and spawn turrets at marked tiles and remove them from open tiles
+    // you're doing this so you can manually place turrets so their position makes more sense
 
     private void Start()
     {
