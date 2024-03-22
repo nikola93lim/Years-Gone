@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public event Action<int> OnNewWave;
 
     [SerializeField] private Wave[] _waves;
-    [SerializeField] private Enemy _zombiePrefab;
+    [SerializeField] private Enemy[] _enemyPrefabs;
     [SerializeField] private Enemy _turretPrefab;
 
     private MapGenerator _mapGenerator;
@@ -101,8 +101,9 @@ public class Spawner : MonoBehaviour
             yield return null;
         }
 
-        Enemy spawnedZombie = Instantiate(_zombiePrefab, openTile.position + Vector3.up, Quaternion.identity);
-        spawnedZombie.OnDeath += OnEnemyDeath;
+        int randomIndex = UnityEngine.Random.Range(0, _enemyPrefabs.Length);
+        Enemy spawnedEnemy = Instantiate(_enemyPrefabs[randomIndex], openTile.position + Vector3.up, Quaternion.identity);
+        spawnedEnemy.OnDeath += OnEnemyDeath;
     }
 
     private void OnEnemyDeath(Vector3 hitDirection)

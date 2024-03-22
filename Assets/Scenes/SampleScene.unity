@@ -4438,8 +4438,9 @@ MonoBehaviour:
   - turretCount: 2
     enemyCount: 3
     timeBetweenSpawns: 1
-  _zombiePrefab: {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708,
-    type: 3}
+  _enemyPrefabs:
+  - {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708, type: 3}
+  - {fileID: 2783541461539678679, guid: 69027bae0243ccd47ac926cba95ed921, type: 3}
   _turretPrefab: {fileID: 4239273790939271706, guid: b9580b05a87e9ce428e1b0aa9aad090f,
     type: 3}
 --- !u!4 &761251619
@@ -10323,7 +10324,7 @@ PrefabInstance:
     - target: {fileID: 470755974079974644, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.04
+      value: -4.81
       objectReference: {fileID: 0}
     - target: {fileID: 470755974079974644, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}
@@ -10333,7 +10334,7 @@ PrefabInstance:
     - target: {fileID: 470755974079974644, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.65
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 470755974079974644, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}
@@ -10375,39 +10376,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3165955449543746152, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _startingHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3810780694836771805, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5656263102617713469, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _weaponFactory
-      value: 
-      objectReference: {fileID: 11400000, guid: 6cd27d3dca1f2f24394c78d199b2cbf5,
-        type: 2}
-    - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _weaponFactory2
-      value: 
-      objectReference: {fileID: 11400000, guid: ca59819ce065bef428a5725b70dcdf29,
-        type: 2}
-    - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _startingWeaponFactory
-      value: 
-      objectReference: {fileID: 11400000, guid: 73174596d23e07240a7a0ddba70b4139,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6955483554049984349}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a379a6afa138eb4b9cee0a7b2d21b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingHealth: 5
+  _startingHealth: 100
 --- !u!114 &2287611601586238994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponSpawnTransform: {fileID: 3344026010613274012}
-  _weaponFactory: {fileID: 11400000, guid: b3e80055873b5cd45898e19e4659ad93, type: 2}
+  _startingWeaponFactory: {fileID: 11400000, guid: 73174596d23e07240a7a0ddba70b4139,
+    type: 2}
 --- !u!1 &5152193491985664791
 GameObject:
   m_ObjectHideFlags: 0

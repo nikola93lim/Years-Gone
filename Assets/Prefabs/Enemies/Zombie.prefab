@@ -126,10 +126,10 @@ GameObject:
   - component: {fileID: 296378748719510566}
   - component: {fileID: 2783541461539678679}
   - component: {fileID: 4849432213540499244}
-  - component: {fileID: 965401750876484077}
   - component: {fileID: -8473195155350757822}
-  - component: {fileID: 1226644986086296466}
   - component: {fileID: -7966212554223365023}
+  - component: {fileID: 965401750876484077}
+  - component: {fileID: 1226644986086296466}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Untagged
@@ -201,6 +201,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingHealth: 5
+--- !u!114 &-8473195155350757822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105423696548824127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a37dc1fe32d9ea43b4258f7920417c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathParticleSystem: {fileID: 8350531174545190116, guid: 6c1e0b24d7ccafe46aadd03d561a113d,
+    type: 3}
+  _bloodSplatterParticleSystem: {fileID: 3548588485384254794, guid: bb1f8b2de273c5c4380ca9129f696a86,
+    type: 3}
+--- !u!114 &-7966212554223365023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105423696548824127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2cc52cd35af40489be88a9f40c736f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackSpeed: 3
 --- !u!136 &965401750876484077
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -224,22 +253,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &-8473195155350757822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105423696548824127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a37dc1fe32d9ea43b4258f7920417c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _deathParticleSystem: {fileID: 8350531174545190116, guid: 6c1e0b24d7ccafe46aadd03d561a113d,
-    type: 3}
-  _bloodSplatterParticleSystem: {fileID: 3548588485384254794, guid: bb1f8b2de273c5c4380ca9129f696a86,
-    type: 3}
 --- !u!54 &1226644986086296466
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267,16 +280,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-7966212554223365023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105423696548824127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2cc52cd35af40489be88a9f40c736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackSpeed: 3

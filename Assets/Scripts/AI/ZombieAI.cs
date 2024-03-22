@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class ZombieAI : MonoBehaviour
 {
     public enum State
     {
