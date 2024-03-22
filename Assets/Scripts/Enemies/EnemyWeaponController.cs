@@ -5,7 +5,7 @@ public class EnemyWeaponController : MonoBehaviour
     [SerializeField] private Transform _weaponSpawnTransform;
 
     [SerializeField] WeaponFactory _weaponFactory;
-    private BaseWeapon _weapon;
+    private Weapon _weapon;
 
     private float _nextShotTime;
     private float _timeBetweenShots;

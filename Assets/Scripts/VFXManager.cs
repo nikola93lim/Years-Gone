@@ -28,13 +28,13 @@ public class VFXManager : MonoBehaviour
     private void Health_OnDeath(Vector3 hitDirection)
     {
         ParticleSystem deathVFX = Instantiate(_deathParticleSystem, transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
-        Destroy(deathVFX, deathVFX.main.startLifetime.constant);
+        Destroy(deathVFX.gameObject, deathVFX.main.startLifetime.constant);
     }
 
     private void Health_OnHit()
     {
         ParticleSystem bloodSplatterVFX = Instantiate(_bloodSplatterParticleSystem, transform.position, Quaternion.Euler(Random.insideUnitSphere));
-        Destroy(bloodSplatterVFX, bloodSplatterVFX.main.startLifetime.constant);
+        Destroy(bloodSplatterVFX.gameObject, bloodSplatterVFX.main.startLifetime.constant);
         StartCoroutine(FlashWhenHit());
     }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Shotgun : BaseWeapon
+public class Shotgun : Weapon
 {
     public override void Shoot()
     {

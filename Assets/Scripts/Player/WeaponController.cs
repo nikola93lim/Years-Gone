@@ -5,8 +5,9 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] private Transform _weaponSpawnTransform;
 
-    [SerializeField] WeaponFactory _weaponFactory;
-    private BaseWeapon _weapon;
+    [SerializeField] WeaponFactory _startingWeaponFactory;
+
+    private Weapon _weapon;
 
     private InputReader _inputReader;
 
@@ -19,7 +20,7 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
-        EquipWeapon(_weaponFactory);
+        EquipWeapon(_startingWeaponFactory);
     }
 
     private void Update()
@@ -36,6 +37,11 @@ public class WeaponController : MonoBehaviour
 
     public void EquipWeapon(WeaponFactory weaponFactory)
     {
+        if (_weapon != null)
+        {
+            Destroy(_weapon.gameObject);
+        }
+
         _weapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
     }
 

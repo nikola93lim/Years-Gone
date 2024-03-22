@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class BaseWeapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected Transform[] _muzzles;
     [SerializeField] protected Transform _shellEjector;

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TurretGun : BaseWeapon
+public class TurretGun : Weapon
 {
     [SerializeField] private float _range;
     [SerializeField] private float _rotationSpeed = 1.0f;
@@ -15,7 +15,9 @@ public class TurretGun : BaseWeapon
     protected override void Start()
     {
         base.Start();
+
         _waitInterval = new WaitForSeconds(_checkForTargetInterval);
+
         StartCoroutine(CheckForTarget());
     }
 
