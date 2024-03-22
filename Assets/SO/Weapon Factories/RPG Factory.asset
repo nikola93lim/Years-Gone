@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponPrefab: {fileID: 5872191589440665234, guid: b2a15b3769c80b84db8f969d9c47121a,
     type: 3}
-  _weaponStrategy: {fileID: 11400000, guid: d56f56a6eec608c42bfc096d1efb5591, type: 2}
+  _weaponStrategy: {fileID: 11400000, guid: aa32e3df254db814d9faf9d5378c2bf1, type: 2}

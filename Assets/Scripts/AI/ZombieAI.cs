@@ -61,7 +61,14 @@ public class ZombieAI : MonoBehaviour
         _hasTarget = true;
 
         _currentState = State.Chasing;
+
+        _health.OnHit += Health_OnHit;
         StartCoroutine(UpdatePath());
+    }
+
+    private void Health_OnHit()
+    {
+        _agent.Warp(transform.position);
     }
 
     private void Update()

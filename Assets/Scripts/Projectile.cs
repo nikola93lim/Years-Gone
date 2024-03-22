@@ -37,7 +37,12 @@ public class Projectile : MonoBehaviour
     {
         if (collider.TryGetComponent(out Health health))
         {
+            if (collider.TryGetComponent(out Rigidbody rb))
+            {
+                rb.AddForce(transform.forward, ForceMode.VelocityChange);
+            }
             health.TakeHit(_damage, transform.forward);
+
         }
         else
         {
