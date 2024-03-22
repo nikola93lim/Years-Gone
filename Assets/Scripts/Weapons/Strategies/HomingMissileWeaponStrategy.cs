@@ -13,6 +13,7 @@ public class HomingMissileWeaponStrategy : WeaponStrategy
     {
         Projectile missile = Instantiate(_missilePrefab, projectileOrigin.position, projectileOrigin.rotation);
         missile.SetSpeed(muzzleVelocity);
+        if (target == null) return;
 
         missile.Callback += () =>
         {

@@ -41,8 +41,8 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            ParticleSystem obstacleHitParticle = Instantiate(_objectHitParticleSystem, transform.position, Quaternion.identity);
-            Destroy(obstacleHitParticle.gameObject, obstacleHitParticle.main.startLifetime.constant);
+            ParticleSystem objectHitParticle = Instantiate(_objectHitParticleSystem, transform.position, Quaternion.identity);
+            Destroy(objectHitParticle.gameObject, objectHitParticle.main.startLifetime.constant);
         }
 
         Destroy(gameObject);
