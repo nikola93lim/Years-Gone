@@ -3,7 +3,6 @@
 [CreateAssetMenu(fileName = "MissileStrategy", menuName = "Weapon Strategy/Missile")]
 public class MissileWeaponStrategy : WeaponStrategy
 {
-    [SerializeField] private float _trackingSpeed = 1.0f;
     [SerializeField] private Projectile _missilePrefab;
     [SerializeField] private ParticleSystem _fireBackParticleSystem;
 
