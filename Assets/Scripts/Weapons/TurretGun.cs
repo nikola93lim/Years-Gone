@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TurretGun : Weapon
 {
@@ -25,11 +26,22 @@ public class TurretGun : Weapon
     {
         if (_target != null)
         {
-            transform.LookAt(_target);
+            // Calculate the direction from the current position to the target position
+            Vector3 direction = _target.position - transform.position;
+
+            // Ensure that the direction is not zero (to avoid division by zero)
+            if (direction != Vector3.zero)
+            {
+                // Create a rotation that looks along the given direction
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+                // Smoothly interpolate between the current rotation and the target rotation using Quaternion.Slerp
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * 0.1f * Time.deltaTime);
+            }
         }
         else
         {
-            transform.Rotate(Vector3.up * _rotationSpeed * Time.deltaTime);
+            transform.Rotate(_rotationSpeed * Time.deltaTime * Vector3.up);
         }
     }
 
