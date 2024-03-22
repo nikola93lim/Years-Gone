@@ -193,8 +193,10 @@ public class SoldierAI : MonoBehaviour
 
     private bool IsAggrevated()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-        return (distanceToPlayer < _chaseDistance && HasLineOfSight()) || _timeSinceLastAggrevated < aggroCooldownTime;
+        if (_player == null) return false;
+        
+        float distanceToPlayerSq = (transform.position - _player.transform.position).sqrMagnitude;
+        return (distanceToPlayerSq < Mathf.Pow(_chaseDistance, 2) && HasLineOfSight()) || _timeSinceLastAggrevated < aggroCooldownTime;
     }
 
     private Vector3 RandomNavmeshLocation(Vector3 origin, float radius)
