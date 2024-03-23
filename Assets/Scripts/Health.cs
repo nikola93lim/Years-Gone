@@ -4,14 +4,14 @@ public class Health : MonoBehaviour
 {
     public event Action<Vector3> OnDeath;
     public event Action OnHit;
-    [SerializeField] private int _startingHealth;
+    [SerializeField] private int _maxHealth;
 
     private float _currentHealth;
     private bool _isAlive = true;
 
     private void Awake()
     {
-        _currentHealth = _startingHealth;
+        _currentHealth = _maxHealth;
     }
 
     public void TakeHit(int damageAmount, Vector3 hitDirection)
@@ -25,6 +25,16 @@ public class Health : MonoBehaviour
         else
         {
             OnHit?.Invoke();
+        }
+    }
+
+    public void Heal(int healAmount)
+    {
+        _currentHealth += healAmount;
+
+        if (_currentHealth > _maxHealth)
+        {
+            _currentHealth = _maxHealth;
         }
     }
 
