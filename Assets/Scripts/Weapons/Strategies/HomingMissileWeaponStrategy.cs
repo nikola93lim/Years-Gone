@@ -5,12 +5,13 @@ using UnityEngine;
 public class HomingMissileWeaponStrategy : WeaponStrategy
 {
     [SerializeField] private float _trackingSpeed = 1.0f;
-    [SerializeField] private Projectile _missilePrefab;
+    [SerializeField] private ProjectileSettings _homingMissileSettings;
     [SerializeField] private ParticleSystem _fireBackParticleSystem;
 
     public override void Fire(Transform projectileOrigin, Transform shellOrigin, Transform target, float muzzleVelocity)
     {
-        Projectile missile = Instantiate(_missilePrefab, projectileOrigin.position, projectileOrigin.rotation);
+        Projectile missile = FlyweightFactory.Spawn(_homingMissileSettings) as Projectile;
+        missile.transform.SetPositionAndRotation(projectileOrigin.position, projectileOrigin.rotation);
         missile.SetSpeed(muzzleVelocity);
 
         missile.Callback += () =>

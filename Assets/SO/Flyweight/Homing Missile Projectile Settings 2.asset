@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ec2657a1fb55247b7cd2187cb7dfa7, type: 3}
+  m_Name: Homing Missile Projectile Settings 2
+  m_EditorClassIdentifier: 
+  Type: 2
+  Prefab: {fileID: 2725381129926443121, guid: 199fc7fb6fbd2bd4da6c7a76139412a9, type: 3}
+  CollisionMask:
+    serializedVersion: 2
+    m_Bits: 2304
+  ObjectHitParticleSystem: {fileID: 74078499623404260, guid: e5bf3e125f84f544fa3aaad2dfe14ac9,
+    type: 3}
+  MoveSpeed: 15
+  Damage: 1
+  Lifetime: 3

@@ -507,7 +507,7 @@ MonoBehaviour:
   _muzzles:
   - {fileID: 937164715869859414}
   _shellEjector: {fileID: 0}
-  _weaponStrategy: {fileID: 11400000, guid: d56f56a6eec608c42bfc096d1efb5591, type: 2}
+  _weaponStrategy: {fileID: 11400000, guid: aa32e3df254db814d9faf9d5378c2bf1, type: 2}
   _muzzleFlash: {fileID: 1107410990671554775}
   _timeBetweenShots: 3
   _muzzleVelocity: 15

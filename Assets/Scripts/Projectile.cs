@@ -1,21 +1,17 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour 
+public class Projectile : Flyweight 
 {
     public event Action Callback;
+    new ProjectileSettings Settings => (ProjectileSettings) base.Settings;
 
-    [SerializeField] private LayerMask _collisionMask;
-    [SerializeField] private ParticleSystem _objectHitParticleSystem;
-    [SerializeField] private float _moveSpeed = 30f;
-    [SerializeField] private int _damage = 1;
-    [SerializeField] private float _lifetime = 3f;
-
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, _lifetime);
+        StartCoroutine(DeactivateAfterLifetimeExpires(Settings.Lifetime));
 
-        Collider[] initialCollisions = Physics.OverlapSphere(transform.position, 0.1f, _collisionMask);
+        Collider[] initialCollisions = Physics.OverlapSphere(transform.position, 0.1f, Settings.CollisionMask);
         if (initialCollisions.Length > 0 )
         {
             OnHitObject(initialCollisions[0]);
@@ -24,13 +20,19 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward);
+        transform.Translate(Settings.MoveSpeed * Time.deltaTime * Vector3.forward);
         Callback?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         OnHitObject(other);
+    }
+
+    private IEnumerator DeactivateAfterLifetimeExpires(float lifetime)
+    {
+        yield return Utility.GetWaitForSeconds(lifetime);
+        FlyweightFactory.ReturnToPool(this);
     }
 
     private void OnHitObject(Collider collider)
@@ -41,20 +43,21 @@ public class Projectile : MonoBehaviour
             {
                 rb.AddForce(transform.forward, ForceMode.VelocityChange);
             }
-            health.TakeHit(_damage, transform.forward);
+            health.TakeHit(Settings.Damage, transform.forward);
 
         }
         else
         {
-            ParticleSystem objectHitParticle = Instantiate(_objectHitParticleSystem, transform.position, Quaternion.identity);
+            ParticleSystem objectHitParticle = Instantiate(Settings.ObjectHitParticleSystem, transform.position, Quaternion.identity);
             Destroy(objectHitParticle.gameObject, objectHitParticle.main.startLifetime.constant);
         }
 
-        Destroy(gameObject);
+        StopCoroutine(nameof(DeactivateAfterLifetimeExpires));
+        FlyweightFactory.ReturnToPool(this);
     }
 
     public void SetSpeed(float speed)
     {
-        _moveSpeed = speed;
+        Settings.MoveSpeed = speed;
     }
 }
