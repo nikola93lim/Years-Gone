@@ -56,7 +56,6 @@ public class Projectile : Flyweight
         else
         {
             ParticleSystem objectHitParticle = Instantiate(Settings.ObjectHitParticleSystem, transform.position, Quaternion.identity);
-            Destroy(objectHitParticle.gameObject, objectHitParticle.main.startLifetime.constant);
         }
 
         StopCoroutine(nameof(DeactivateAfterLifetimeExpires));
