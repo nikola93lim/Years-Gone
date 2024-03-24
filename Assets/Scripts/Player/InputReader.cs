@@ -14,8 +14,6 @@ public class InputReader : MonoBehaviour
     public Vector2 Move => _moveAction.ReadValue<Vector2>();
     public bool Fire => _fireAction.ReadValue<float>() > 0f;
 
-    [SerializeField] private LayerMask _groundLayerMask;
-
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();

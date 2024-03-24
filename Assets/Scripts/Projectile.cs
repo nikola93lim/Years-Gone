@@ -18,11 +18,11 @@ public class Projectile : Flyweight
     {
         StartCoroutine(DeactivateAfterLifetimeExpires(Settings.Lifetime));
 
-        Collider[] initialCollisions = Physics.OverlapSphere(transform.position, 0.1f, Settings.CollisionMask);
+        /*Collider[] initialCollisions = Physics.OverlapSphere(transform.position, 0.1f, Settings.CollisionMask);
         if (initialCollisions.Length > 0 )
         {
             OnHitObject(initialCollisions[0]);
-        }
+        }*/
     }
 
     private void Update()
@@ -55,10 +55,10 @@ public class Projectile : Flyweight
         }
         else
         {
-            ParticleSystem objectHitParticle = Instantiate(Settings.ObjectHitParticleSystem, transform.position, Quaternion.identity);
+            ObjectHitParticle objectHitParticle = FlyweightFactory.Spawn(Settings.ObjectHitParticleSettings) as ObjectHitParticle;
+            objectHitParticle.transform.SetPositionAndRotation(collider.ClosestPointOnBounds(transform.position), Quaternion.identity);
         }
 
-        StopCoroutine(nameof(DeactivateAfterLifetimeExpires));
         FlyweightFactory.ReturnToPool(this);
     }
 

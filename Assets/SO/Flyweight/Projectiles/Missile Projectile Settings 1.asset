@@ -16,9 +16,9 @@ MonoBehaviour:
   Prefab: {fileID: 2725381129926443121, guid: 199fc7fb6fbd2bd4da6c7a76139412a9, type: 3}
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 0
-  ObjectHitParticleSystem: {fileID: 74078499623404260, guid: e5bf3e125f84f544fa3aaad2dfe14ac9,
-    type: 3}
+    m_Bits: 2432
+  ObjectHitParticleSettings: {fileID: 11400000, guid: 72ff2ff231020474584f14089cbb4d80,
+    type: 2}
   MoveSpeed: 30
   Damage: 1
   Lifetime: 3

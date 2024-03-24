@@ -26,5 +26,6 @@ public enum FlyweightType
     Missile,
     HomingMisiile,
     Shell,
+    ObjectHitParticle,
 }
 

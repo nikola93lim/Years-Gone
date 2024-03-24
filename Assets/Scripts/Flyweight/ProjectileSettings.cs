@@ -4,7 +4,7 @@
 public class ProjectileSettings : FlyweightSettings
 {
     public LayerMask CollisionMask;
-    public ParticleSystem ObjectHitParticleSystem;
+    public ObjectHitParticleSettings ObjectHitParticleSettings;
     public float MoveSpeed = 30f;
     public int Damage = 1;
     public float Lifetime = 3f;
