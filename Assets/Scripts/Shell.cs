@@ -2,23 +2,25 @@
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
-public class Shell : MonoBehaviour 
+public class Shell : Flyweight 
 {
-    [SerializeField] private Renderer _renderer;
-    [SerializeField] private float _minForce;
-    [SerializeField] private float _maxForce;
     private Rigidbody rb;
-
-    private float _lifetime = 4f;
-    private float _fadeTime = 2f;
+    private Renderer _renderer;
+    private Material _material;
+    private Color _originalColour;
+    new ShellSettings Settings => (ShellSettings)base.Settings;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        _renderer = GetComponentInChildren<Renderer>();
+
+        _material = _renderer.material;
+        _originalColour = _material.color;
     }
-    private void Start()
+    private void OnEnable()
     {
-        float force = Random.Range(_minForce, _maxForce);
+        float force = Random.Range(Settings.MinForce, Settings.MaxForce);
         rb.AddForce(transform.right * force);
         rb.AddTorque(Random.insideUnitSphere * force);
 
@@ -27,21 +29,25 @@ public class Shell : MonoBehaviour
 
     private IEnumerator Fade()
     {
-        yield return new WaitForSeconds(_lifetime);
+        yield return new WaitForSeconds(Settings.Lifetime);
 
         float percent = 0;
-        float fadeSpeed = 1 / _fadeTime;
-        Material mat = _renderer.material;
-        Color originalColour = mat.color;
+        float fadeSpeed = 1 / Settings.FadeTime;
+        
 
         while (percent < 1)
         {
             percent += Time.deltaTime * fadeSpeed;
-            mat.color = Color.Lerp(originalColour, Color.clear, percent);
+            _material.color = Color.Lerp(_originalColour, Color.clear, percent);
             yield return null;
         }
 
-        Destroy(gameObject);
+        FlyweightFactory.ReturnToPool(this);
+    }
+
+    public void ResetColour()
+    {
+        _material.color = _originalColour;
     }
 }
 

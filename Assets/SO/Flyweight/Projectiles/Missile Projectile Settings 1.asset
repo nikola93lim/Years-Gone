@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61ec2657a1fb55247b7cd2187cb7dfa7, type: 3}
-  m_Name: Bullet Projectile Settings
+  m_Name: Missile Projectile Settings 1
   m_EditorClassIdentifier: 
-  Type: 0
-  Prefab: {fileID: 2725381129926443121, guid: eb11cb1f2613da34d83467c7ab870999, type: 3}
+  Type: 1
+  Prefab: {fileID: 2725381129926443121, guid: 199fc7fb6fbd2bd4da6c7a76139412a9, type: 3}
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 2432
+    m_Bits: 0
   ObjectHitParticleSystem: {fileID: 74078499623404260, guid: e5bf3e125f84f544fa3aaad2dfe14ac9,
     type: 3}
   MoveSpeed: 30

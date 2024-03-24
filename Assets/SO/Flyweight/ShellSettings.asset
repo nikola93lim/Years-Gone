@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01314cb6a89e3a4281e914ebe161582, type: 3}
+  m_Name: ShellSettings
+  m_EditorClassIdentifier: 
+  Type: 3
+  Prefab: {fileID: 8661330683576570197, guid: a75c5b45db6f66d41a9648386808cca6, type: 3}
+  MinForce: 90
+  MaxForce: 120
+  Lifetime: 4
+  FadeTime: 2
