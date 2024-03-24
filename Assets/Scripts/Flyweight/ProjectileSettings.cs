@@ -20,4 +20,16 @@ public class ProjectileSettings : FlyweightSettings
 
         return flyweight;
     }
+
+    public override void OnGet(Flyweight flyweight)
+    {
+        base.OnGet(flyweight);
+        ((Projectile)flyweight).ReactivateTrailRenderer();
+    }
+
+    public override void OnRelease(Flyweight flyweight)
+    {
+        base.OnRelease(flyweight);
+        ((Projectile)flyweight).DeactivateTrailRenderer();
+    }
 }

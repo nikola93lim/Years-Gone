@@ -5,7 +5,14 @@ using UnityEngine;
 public class Projectile : Flyweight 
 {
     public event Action Callback;
+
+    private TrailRenderer _trailRenderer;
     new ProjectileSettings Settings => (ProjectileSettings) base.Settings;
+
+    private void Awake()
+    {
+        _trailRenderer = GetComponent<TrailRenderer>();
+    }
 
     private void OnEnable()
     {
@@ -59,5 +66,16 @@ public class Projectile : Flyweight
     public void SetSpeed(float speed)
     {
         Settings.MoveSpeed = speed;
+    }
+
+    public void DeactivateTrailRenderer()
+    {
+        _trailRenderer.Clear();
+        _trailRenderer.enabled = false;
+    }
+
+    public void ReactivateTrailRenderer()
+    {
+        _trailRenderer.enabled = true;
     }
 }

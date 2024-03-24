@@ -6,7 +6,7 @@ public class FlyweightFactory : MonoBehaviour
 {
     [SerializeField] private bool _collectionCheck = true;
     [SerializeField] private int _defaultCapacity = 10;
-    [SerializeField] private int _maxPoolSize = 100;
+    [SerializeField] private int _maxPoolSize = 10000;
 
     private static FlyweightFactory Instance;
     private readonly Dictionary<FlyweightType, IObjectPool<Flyweight>> _pools = new();

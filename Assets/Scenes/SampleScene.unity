@@ -5201,8 +5201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectionCheck: 1
-  _defaultCapacity: 10
-  _maxPoolSize: 100
+  _defaultCapacity: 500
+  _maxPoolSize: 10000
 --- !u!4 &903732220
 Transform:
   m_ObjectHideFlags: 0
