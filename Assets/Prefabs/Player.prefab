@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a379a6afa138eb4b9cee0a7b2d21b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingHealth: 100
+  _maxHealth: 0
 --- !u!114 &2287611601586238994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a37dc1fe32d9ea43b4258f7920417c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticleSystem: {fileID: 8350531174545190116, guid: 6c1e0b24d7ccafe46aadd03d561a113d,
-    type: 3}
-  _bloodSplatterParticleSystem: {fileID: 3548588485384254794, guid: bb1f8b2de273c5c4380ca9129f696a86,
-    type: 3}
+  _deathParticleSettings: {fileID: 11400000, guid: b24ed95e3264877488156f45ff7ea8c4,
+    type: 2}
+  _bloodSplatterParticleSettings: {fileID: 11400000, guid: f814fe68e4e3c6b4fbb95ad3519c4bd7,
+    type: 2}
 --- !u!114 &8323607077383383663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,9 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652a031e82fb4624a8bf7e6bbcd3bdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &6955483554049984349
 MonoBehaviour:
   m_ObjectHideFlags: 0

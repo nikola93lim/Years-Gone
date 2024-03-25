@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour 
 {
-    [SerializeField] private ParticleSystem _deathParticleSystem;
-    [SerializeField] private ParticleSystem _bloodSplatterParticleSystem;
+    [SerializeField] private ObjectHitParticleSettings _deathParticleSettings;
+    [SerializeField] private ObjectHitParticleSettings _bloodSplatterParticleSettings;
 
     private Material _objectMaterial;
     private Color _objectOriginalColour;
@@ -27,14 +27,21 @@ public class VFXManager : MonoBehaviour
 
     private void Health_OnDeath(Vector3 hitDirection)
     {
-        ParticleSystem deathVFX = Instantiate(_deathParticleSystem, transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
-        Destroy(deathVFX.gameObject, deathVFX.main.startLifetime.constant);
+        ObjectHitParticle deathParticle = FlyweightFactory.Spawn(_deathParticleSettings) as ObjectHitParticle;
+        deathParticle.transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
+
+
+        //ParticleSystem deathVFX = Instantiate(_deathParticleSystem, transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
+        //Destroy(deathVFX.gameObject, deathVFX.main.startLifetime.constant);
     }
 
     private void Health_OnHit()
     {
-        ParticleSystem bloodSplatterVFX = Instantiate(_bloodSplatterParticleSystem, transform.position, Quaternion.Euler(Random.insideUnitSphere));
-        Destroy(bloodSplatterVFX.gameObject, bloodSplatterVFX.main.startLifetime.constant);
+        ObjectHitParticle bloodSplatterParticle = FlyweightFactory.Spawn(_bloodSplatterParticleSettings) as ObjectHitParticle;
+        bloodSplatterParticle.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(Random.insideUnitSphere));
+
+        //ParticleSystem bloodSplatterVFX = Instantiate(_bloodSplatterParticleSystem, transform.position, Quaternion.Euler(Random.insideUnitSphere));
+        //Destroy(bloodSplatterVFX.gameObject, bloodSplatterVFX.main.startLifetime.constant);
         StartCoroutine(FlashWhenHit());
     }
 
