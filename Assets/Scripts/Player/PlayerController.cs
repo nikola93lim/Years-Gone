@@ -1,8 +1,6 @@
 ﻿using System;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour

@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d5c4ec65aba2546a3f80b349b60dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireSound: 2
   _muzzles:
   - {fileID: 1930396322207588480}
   - {fileID: 8782734300315382941}

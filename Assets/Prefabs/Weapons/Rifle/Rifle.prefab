@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb92cb3a5c89db47be01cd5d1752c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireSound: 1
   _muzzles:
   - {fileID: 937164715869859414}
   _shellEjector: {fileID: 8308719429989273874}

@@ -2,6 +2,7 @@
 
 public abstract class Weapon : MonoBehaviour
 {
+    [SerializeField] protected SoundManager.Sound _fireSound;
     [SerializeField] protected Transform[] _muzzles;
     [SerializeField] protected Transform _shellEjector;
     [SerializeField] protected WeaponStrategy _weaponStrategy;
@@ -10,8 +11,6 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float _muzzleVelocity;
 
     protected bool _triggerReleasedSinceLastShot;
-    protected int _shotsRemainingInBurst;
-    protected int _burstCount;
     protected float _nextShotTime;
 
     protected virtual void Start()
