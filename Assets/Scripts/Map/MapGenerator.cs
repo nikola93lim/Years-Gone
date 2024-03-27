@@ -141,7 +141,7 @@ public class MapGenerator : MonoBehaviour
 
         if (tileHolder != null)
         {
-            Destroy(tileHolder.gameObject);
+            DestroyImmediate(tileHolder.gameObject);
         }
 
         Transform holder = new GameObject(tileHolderName).transform;

@@ -150,7 +150,7 @@ public class SoldierAI : MonoBehaviour
     private bool HasLineOfSight()
     {
         RaycastHit hit;
-        Vector3 direction = _player.transform.position - transform.position;
+        Vector3 direction = (_player.transform.position - transform.position).normalized;
 
         // Perform a raycast to check for obstacles
         if (Physics.Raycast(transform.position, direction, out hit, _chaseDistance, _obstacleLayerMask))

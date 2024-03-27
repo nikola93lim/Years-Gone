@@ -29,10 +29,6 @@ public class VFXManager : MonoBehaviour
     {
         ObjectHitParticle deathParticle = FlyweightFactory.Spawn(_deathParticleSettings) as ObjectHitParticle;
         deathParticle.transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
-
-
-        //ParticleSystem deathVFX = Instantiate(_deathParticleSystem, transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
-        //Destroy(deathVFX.gameObject, deathVFX.main.startLifetime.constant);
     }
 
     private void Health_OnHit()
@@ -40,8 +36,6 @@ public class VFXManager : MonoBehaviour
         ObjectHitParticle bloodSplatterParticle = FlyweightFactory.Spawn(_bloodSplatterParticleSettings) as ObjectHitParticle;
         bloodSplatterParticle.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(Random.insideUnitSphere));
 
-        //ParticleSystem bloodSplatterVFX = Instantiate(_bloodSplatterParticleSystem, transform.position, Quaternion.Euler(Random.insideUnitSphere));
-        //Destroy(bloodSplatterVFX.gameObject, bloodSplatterVFX.main.startLifetime.constant);
         StartCoroutine(FlashWhenHit());
     }
 

@@ -112,8 +112,14 @@ public class Spawner : MonoBehaviour
 
         if (_enemiesRemainingAlive == 0)
         {
-            NextWave();
+            StartCoroutine(DelayNextWave());
         }
+    }
+
+    private IEnumerator DelayNextWave()
+    {
+        yield return null;
+        NextWave();
     }
 
     private void NextWave()

@@ -50,8 +50,8 @@ public class Projectile : Flyweight
             {
                 rb.AddForce(transform.forward, ForceMode.VelocityChange);
             }
-            health.TakeHit(Settings.Damage, transform.forward);
 
+            health.TakeHit(Settings.Damage, transform.forward);
         }
         else
         {

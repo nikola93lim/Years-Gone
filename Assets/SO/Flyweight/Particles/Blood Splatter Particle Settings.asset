@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46ee74f7347a4649ac3b48f0f533574, type: 3}
   m_Name: Blood Splatter Particle Settings
   m_EditorClassIdentifier: 
-  Type: 0
-  Prefab: {fileID: 0}
+  Type: 5
+  Prefab: {fileID: 3548588485384254792, guid: bb1f8b2de273c5c4380ca9129f696a86, type: 3}
