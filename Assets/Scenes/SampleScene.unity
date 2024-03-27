@@ -15064,17 +15064,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3165955449543746152, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
-        type: 3}
-      propertyPath: _startingWeaponFactory
-      value: 
-      objectReference: {fileID: 11400000, guid: 73174596d23e07240a7a0ddba70b4139,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

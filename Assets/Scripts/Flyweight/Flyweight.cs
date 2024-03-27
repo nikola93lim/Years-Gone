@@ -29,5 +29,8 @@ public enum FlyweightType
     ObstacleHitParticle,
     BloodSplatterParticle,
     DeathParticle,
+    HealthHitSound,
+    DeathSound,
+    ObstacleHitSound,
 }
 

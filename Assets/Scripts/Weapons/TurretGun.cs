@@ -72,7 +72,7 @@ public class TurretGun : Weapon
             _weaponStrategy.Fire(muzzle, _shellEjector, _target, _muzzleVelocity);
             _muzzleFlash.Activate();
             _nextShotTime = Time.time + _timeBetweenShots;
-            SoundManager.PlaySound(_fireSound, _muzzles[0].position);
+            //SoundManager.PlaySound(_fireSound, _muzzles[0].position);
         }
     }
 }

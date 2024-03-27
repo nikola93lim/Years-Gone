@@ -53,13 +53,6 @@ public class Projectile : Flyweight
 
             health.TakeHit(Settings.Damage, transform.forward);
         }
-        else
-        {
-            ObjectHitParticle objectHitParticle = FlyweightFactory.Spawn(Settings.ObjectHitParticleSettings) as ObjectHitParticle;
-            objectHitParticle.transform.SetPositionAndRotation(collider.ClosestPointOnBounds(transform.position), Quaternion.identity);
-
-            SoundManager.PlaySound(SoundManager.Sound.ObjectHit, transform.position);
-        }
 
         FlyweightFactory.ReturnToPool(this);
     }

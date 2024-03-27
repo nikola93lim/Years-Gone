@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f136d6cf742658f44a692c196b6b1554, type: 3}
+  m_Name: Health Hit Sound
+  m_EditorClassIdentifier: 
+  Type: 7
+  Prefab: {fileID: 4493395116098137925, guid: b184c0c76c440e84c86943d05c27b701, type: 3}
+  AudioClip: {fileID: 8300000, guid: 15c2b24f018f67145862b783c8765f38, type: 3}

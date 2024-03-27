@@ -6,6 +6,8 @@ public class VFXManager : MonoBehaviour
 {
     [SerializeField] private ObjectHitParticleSettings _deathParticleSettings;
     [SerializeField] private ObjectHitParticleSettings _bloodSplatterParticleSettings;
+    [SerializeField] private SoundObjectFXSettings _hitSoundSettings;
+    [SerializeField] private SoundObjectFXSettings _deathSoundSettings;
 
     private Material _objectMaterial;
     private Color _objectOriginalColour;
@@ -27,20 +29,29 @@ public class VFXManager : MonoBehaviour
 
     private void Health_OnDeath(Vector3 hitDirection)
     {
-        ObjectHitParticle deathParticle = FlyweightFactory.Spawn(_deathParticleSettings) as ObjectHitParticle;
-        deathParticle.transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
-
-        SoundManager.PlaySound(SoundManager.Sound.EnemyDeath, transform.position);
+        CreateParticleFX(_deathParticleSettings, hitDirection);
+        CreateSoundFX(_deathSoundSettings);
     }
 
     private void Health_OnHit()
     {
-        ObjectHitParticle bloodSplatterParticle = FlyweightFactory.Spawn(_bloodSplatterParticleSettings) as ObjectHitParticle;
-        bloodSplatterParticle.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(Random.insideUnitSphere));
-
-        SoundManager.PlaySound(SoundManager.Sound.EnemyHit, transform.position);
+        CreateParticleFX(_bloodSplatterParticleSettings, Vector3.zero);
+        CreateSoundFX(_hitSoundSettings);
 
         StartCoroutine(FlashWhenHit());
+    }
+
+    private void CreateParticleFX(ObjectHitParticleSettings settings, Vector3 hitDirection)
+    {
+        ObjectHitParticle particleFX = FlyweightFactory.Spawn(settings) as ObjectHitParticle;
+        particleFX.transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
+    }
+
+    private void CreateSoundFX(SoundObjectFXSettings settings)
+    {
+        SoundObjectFX soundFX = FlyweightFactory.Spawn(settings) as SoundObjectFX;
+        soundFX.transform.position = transform.position;
+        soundFX.PlaySound();
     }
 
     private IEnumerator FlashWhenHit()

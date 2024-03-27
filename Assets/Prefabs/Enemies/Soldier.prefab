@@ -218,6 +218,9 @@ MonoBehaviour:
     type: 2}
   _bloodSplatterParticleSettings: {fileID: 11400000, guid: f814fe68e4e3c6b4fbb95ad3519c4bd7,
     type: 2}
+  _hitSoundSettings: {fileID: 11400000, guid: c083b7601ac98d24fa6f07bf09442a08, type: 2}
+  _deathSoundSettings: {fileID: 11400000, guid: 405a21d3153c32a4ab27530866c598c7,
+    type: 2}
 --- !u!136 &965401750876484077
 CapsuleCollider:
   m_ObjectHideFlags: 0
