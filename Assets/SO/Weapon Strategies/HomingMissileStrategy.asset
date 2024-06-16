@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4909ca9ae83df4ca33810e98c5d8e7, type: 3}
   m_Name: HomingMissileStrategy
   m_EditorClassIdentifier: 
-  _trackingSpeed: 10
-  _homingMissileSettings: {fileID: 11400000, guid: 8c4f6613d6745bf4c89c7c539d4b0acc,
+  _projectileSettings: {fileID: 11400000, guid: 8c4f6613d6745bf4c89c7c539d4b0acc,
     type: 2}
+  _soundObjectFXSettings: {fileID: 0}
+  _trackingSpeed: 10
   _fireBackParticleSystem: {fileID: 0}

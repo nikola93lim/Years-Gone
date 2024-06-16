@@ -1,20 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class EnemyWeaponController : MonoBehaviour
+public class EnemyWeaponController : BaseWeaponController
 {
-    [SerializeField] private Transform _weaponSpawnTransform;
-    [SerializeField] WeaponFactory _weaponFactory;
     [SerializeField] private bool _isStaticEnemy;
-
-    private Weapon _weapon;
 
     private float _nextShotTime;
     private float _timeBetweenShots;
-
-    private void Start()
-    {
-        EquipWeapon(_weaponFactory);
-    }
 
     private void Update()
     {
@@ -28,13 +20,13 @@ public class EnemyWeaponController : MonoBehaviour
 
     public void Shoot()
     {
-        _weapon.Shoot();
+        _currentWeapon.Shoot();
         _nextShotTime = Time.time + _timeBetweenShots;
     }
 
-    public void EquipWeapon(WeaponFactory weaponFactory)
+    public override void EquipWeapon(WeaponFactory weaponFactory)
     {
-        _weapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
-        _timeBetweenShots = _weapon.GetTimeBetweenShots();
+        base.EquipWeapon(weaponFactory);
+        _timeBetweenShots = _currentWeapon.GetTimeBetweenShots();
     }
 }

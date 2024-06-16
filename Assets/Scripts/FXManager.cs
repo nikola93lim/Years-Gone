@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TreeEditor;
 using UnityEngine;
-
-public class VFXManager : MonoBehaviour 
+public class FXManager : MonoBehaviour 
 {
     [SerializeField] private ObjectHitParticleSettings _deathParticleSettings;
     [SerializeField] private ObjectHitParticleSettings _bloodSplatterParticleSettings;
@@ -29,25 +29,25 @@ public class VFXManager : MonoBehaviour
 
     private void Health_OnDeath(Vector3 hitDirection)
     {
-        CreateParticleFX(_deathParticleSettings, hitDirection);
-        CreateSoundFX(_deathSoundSettings);
+        PlayParticleFX(_deathParticleSettings, hitDirection);
+        PlaySoundFX(_deathSoundSettings);
     }
 
     private void Health_OnHit()
     {
-        CreateParticleFX(_bloodSplatterParticleSettings, Vector3.zero);
-        CreateSoundFX(_hitSoundSettings);
+        PlayParticleFX(_bloodSplatterParticleSettings, Vector3.zero);
+        PlaySoundFX(_hitSoundSettings);
 
         StartCoroutine(FlashWhenHit());
     }
 
-    private void CreateParticleFX(ObjectHitParticleSettings settings, Vector3 hitDirection)
+    private void PlayParticleFX(ObjectHitParticleSettings settings, Vector3 hitDirection)
     {
         ObjectHitParticle particleFX = FlyweightFactory.Spawn(settings) as ObjectHitParticle;
         particleFX.transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.forward, hitDirection));
     }
 
-    private void CreateSoundFX(SoundObjectFXSettings settings)
+    private void PlaySoundFX(SoundObjectFXSettings settings)
     {
         SoundObjectFX soundFX = FlyweightFactory.Spawn(settings) as SoundObjectFX;
         soundFX.transform.position = transform.position;

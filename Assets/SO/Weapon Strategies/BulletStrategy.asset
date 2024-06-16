@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9804a835a3bdc5646aa55d15e615758d, type: 3}
   m_Name: BulletStrategy
   m_EditorClassIdentifier: 
-  _bulletSettings: {fileID: 11400000, guid: 63d3b48f1af7b3f44a74eacba3d117bd, type: 2}
+  _projectileSettings: {fileID: 11400000, guid: 63d3b48f1af7b3f44a74eacba3d117bd,
+    type: 2}
+  _soundObjectFXSettings: {fileID: 11400000, guid: 16e60d4c636f275438cca57a616fd2e4,
+    type: 2}
   _shellSettings: {fileID: 11400000, guid: 092b944c5d198aa4eb27a499b376e07f, type: 2}

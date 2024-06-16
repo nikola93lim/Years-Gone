@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f136d6cf742658f44a692c196b6b1554, type: 3}
-  m_Name: Obstacle Hit Sound
+  m_Name: Bullet Shoot Sound
   m_EditorClassIdentifier: 
-  Type: 9
+  Type: 10
   Prefab: {fileID: 4493395116098137925, guid: b184c0c76c440e84c86943d05c27b701, type: 3}
-  AudioClip: {fileID: 8300000, guid: 156d528c1cb0a734d9e2ac5abe5f3626, type: 3}
+  AudioClip: {fileID: 8300000, guid: 674f10c37b8dc89488d3f95ae592f583, type: 3}
+  FrequentSound: 1

@@ -6,6 +6,6 @@ public class AmmoPickupSpawner : PickupSpawner
 
     public override void Pickup(Collider other)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Picked up!");
     }
 }

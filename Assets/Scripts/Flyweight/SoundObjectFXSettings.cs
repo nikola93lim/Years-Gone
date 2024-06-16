@@ -4,6 +4,7 @@
 public class SoundObjectFXSettings : FlyweightSettings
 {
     public AudioClip AudioClip;
+    public bool FrequentSound;
 
     public override Flyweight Create()
     {

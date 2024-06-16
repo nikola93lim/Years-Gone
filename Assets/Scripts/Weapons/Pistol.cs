@@ -14,8 +14,7 @@ public class Pistol : Weapon
             }
             _muzzleFlash.Activate();
             _nextShotTime = Time.time + _timeBetweenShots;
-            SoundManager.PlaySound(_fireSound, _muzzles[0].position);
-
+            //SoundManager.PlaySound(_fireSound, _muzzles[0].position);
         }
     }
 }

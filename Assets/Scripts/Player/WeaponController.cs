@@ -1,14 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : BaseWeaponController
 {
-    [SerializeField] private Transform _weaponSpawnTransform;
-
-    [SerializeField] WeaponFactory _startingWeaponFactory;
-
-    private Weapon _weapon;
-
     private InputReader _inputReader;
 
     public Transform GunSpawnTransform {  get { return _weaponSpawnTransform; } }
@@ -16,11 +10,6 @@ public class WeaponController : MonoBehaviour
     private void Awake()
     {
         _inputReader = GetComponent<InputReader>();
-    }
-
-    private void Start()
-    {
-        EquipWeapon(_startingWeaponFactory);
     }
 
     private void Update()
@@ -35,29 +24,19 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(WeaponFactory weaponFactory)
-    {
-        if (_weapon != null)
-        {
-            Destroy(_weapon.gameObject);
-        }
-
-        _weapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
-    }
-
     public void OnTriggerHold()
     {
-        if (_weapon != null)
+        if (_currentWeapon != null)
         {
-            _weapon.OnTriggerHold();
+            _currentWeapon.OnTriggerHold();
         }
     }
 
     public void OnTriggerRelease()
     {
-        if (_weapon != null)
+        if (_currentWeapon != null)
         {
-            _weapon.OnTriggerRelease();
+            _currentWeapon.OnTriggerRelease();
         }
     }
 
