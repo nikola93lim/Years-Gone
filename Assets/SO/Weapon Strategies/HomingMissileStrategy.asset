@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileSettings: {fileID: 11400000, guid: 8c4f6613d6745bf4c89c7c539d4b0acc,
     type: 2}
-  _soundObjectFXSettings: {fileID: 0}
+  _soundObjectFXSettings: {fileID: 11400000, guid: 8c23c7ab619362f4aaef2010f07ef361,
+    type: 2}
   _trackingSpeed: 10
   _fireBackParticleSystem: {fileID: 0}

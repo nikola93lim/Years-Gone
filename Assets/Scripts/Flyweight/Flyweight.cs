@@ -32,6 +32,7 @@ public enum FlyweightType
     HealthHitSound,
     DeathSound,
     ObstacleHitSound,
-    ShootSound
+    BulletShootSound,
+    MissileShootSound,
 }
 

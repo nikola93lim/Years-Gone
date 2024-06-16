@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d31ac0bfc06966488dd755db172ec98, type: 3}
   m_Name: MissileStrategy
   m_EditorClassIdentifier: 
-  _missileSettings: {fileID: 11400000, guid: 09218b8a3ba7c1f4f89b285f95ba391f, type: 2}
+  _projectileSettings: {fileID: 11400000, guid: 09218b8a3ba7c1f4f89b285f95ba391f,
+    type: 2}
+  _soundObjectFXSettings: {fileID: 11400000, guid: 8c23c7ab619362f4aaef2010f07ef361,
+    type: 2}
   _fireBackParticleSystem: {fileID: 0}
