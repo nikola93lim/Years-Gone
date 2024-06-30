@@ -6,7 +6,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private Transform _tilePrefab;
-    [SerializeField] private Transform _obstaclePrefab;
+    [SerializeField] private Transform[] _obstaclePrefabs;
     [SerializeField] private Transform _navMeshFloor;
     [SerializeField] private Transform _navMeshMaskPrefab;
 
@@ -97,13 +97,15 @@ public class MapGenerator : MonoBehaviour
             {
                 float obstacleHeight = Mathf.Lerp(_currentMap._minObstacleHeight, _currentMap._maxObstacleHeight, (float)prng.NextDouble());
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
-                Transform newObstacle = Instantiate(_obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight / 2, Quaternion.identity);
+
+                int randomObstacleIndex = UnityEngine.Random.Range(0, _obstaclePrefabs.Length);
+                Transform newObstacle = Instantiate(_obstaclePrefabs[randomObstacleIndex], obstaclePosition, Quaternion.identity);
                 newObstacle.transform.localScale = new Vector3((1f - _tileOutlinePercentage) * _tileSize, obstacleHeight, (1f - _tileOutlinePercentage) * _tileSize);
                 newObstacle.parent = holder;
 
                 _allOpenTilesCoords.Remove(randomCoord);
 
-                Renderer obstacleRenderer = newObstacle.GetComponent<Renderer>();
+                Renderer obstacleRenderer = newObstacle.GetComponentInChildren<Renderer>();
                 Material obstacleMaterial = new Material(obstacleRenderer.sharedMaterial);
 
                 float colourPercent = (float)randomCoord.y / _currentMap._mapSize.y;
