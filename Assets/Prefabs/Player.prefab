@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5656263102617713469}
   - component: {fileID: 3165955449543746152}
   - component: {fileID: 2287611601586238994}
+  - component: {fileID: 4795799098026207636}
   - component: {fileID: 8323607077383383663}
   - component: {fileID: 8603314016561487324}
   - component: {fileID: 6955483554049984349}
@@ -83,7 +84,7 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _speed: 10
+  _speed: 6
 --- !u!136 &5656263102617713469
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -139,6 +140,18 @@ MonoBehaviour:
   _hitSoundSettings: {fileID: 11400000, guid: c083b7601ac98d24fa6f07bf09442a08, type: 2}
   _deathSoundSettings: {fileID: 11400000, guid: 405a21d3153c32a4ab27530866c598c7,
     type: 2}
+--- !u!114 &4795799098026207636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137921366799394453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a350699734fd8b746a5e8a2df0019f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8323607077383383663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +376,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95880590792931522, guid: 325c2a72f558d4e419ec4f9ea74e54f5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 034ad580a357d494e88af074fea43247, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

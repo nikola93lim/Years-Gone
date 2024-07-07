@@ -8757,13 +8757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c115e6b5502faf429b528c9bbd77176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waves:
-  - turretCount: 1
-    enemyCount: 2
-    timeBetweenSpawns: 1
-  - turretCount: 2
-    enemyCount: 3
-    timeBetweenSpawns: 1
+  _waves: []
   _enemyPrefabs:
   - {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708, type: 3}
   - {fileID: 2783541461539678679, guid: 69027bae0243ccd47ac926cba95ed921, type: 3}
@@ -23081,6 +23075,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810780694836771805, guid: 6b127bf677c991e47a64c9b98fdd65e8,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826124713432968324, guid: 6b127bf677c991e47a64c9b98fdd65e8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 034ad580a357d494e88af074fea43247, type: 2}
+    - target: {fileID: 5826124713432968324, guid: 6b127bf677c991e47a64c9b98fdd65e8,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955483554049984349, guid: 6b127bf677c991e47a64c9b98fdd65e8,
         type: 3}

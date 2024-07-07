@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private InputReader _inputReader;
 
-    private Vector3 _velocity;
+    private Vector3 _inputDirection;
 
     private void Awake()
     {
@@ -21,18 +21,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        SetVelocity(_inputReader.Move);
+        SetInputDirection(_inputReader.Move);
         HandleLookInput();
     }
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _speed * Time.fixedDeltaTime * _velocity.normalized);
+        MovePlayer();
     }
 
-    private void SetVelocity(Vector2 input)
+    private void SetInputDirection(Vector2 input)
     {
-        _velocity = new Vector3(input.x, 0f, input.y);
+        _inputDirection = new Vector3(input.x, 0f, input.y);
+    }
+
+    private void MovePlayer()
+    {
+        Vector3 targetVelocity = _inputDirection * _speed;
+        _rb.velocity = new Vector3(targetVelocity.x, _rb.velocity.y, targetVelocity.z);
     }
 
     private void HandleLookInput()
@@ -47,5 +53,10 @@ public class PlayerController : MonoBehaviour
             Vector3 adjustedLookAtPoint = new Vector3(point.x, transform.position.y, point.z);
             transform.LookAt(adjustedLookAtPoint);
         }
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return _rb.velocity;
     }
 }
