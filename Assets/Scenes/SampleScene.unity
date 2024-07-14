@@ -8757,7 +8757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c115e6b5502faf429b528c9bbd77176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waves: []
+  _waves:
+  - turretCount: 0
+    enemyCount: 3
+    timeBetweenSpawns: 1
   _enemyPrefabs:
   - {fileID: 2783541461539678679, guid: 588e659974b069b418eb098291814708, type: 3}
   - {fileID: 2783541461539678679, guid: 69027bae0243ccd47ac926cba95ed921, type: 3}

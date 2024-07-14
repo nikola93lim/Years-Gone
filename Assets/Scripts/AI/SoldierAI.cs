@@ -12,12 +12,14 @@ public class SoldierAI : MonoBehaviour
     [SerializeField] private float _waypointDwellTime = 3f;
     [SerializeField] private float aggroCooldownTime = 5f;
     [SerializeField] private float _rotationSpeed = 30f;
+    [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private int _numOfPatrolPoints = 4;
     [SerializeField] private List<Vector3> _patrolPath;
 
     [SerializeField] private LayerMask _enemyLayerMask;
     [SerializeField] private LayerMask _obstacleLayerMask;
 
+    private Rigidbody _rb;
     private NavMeshAgent _agent;
     private EnemyWeaponController _weaponController;
     private GameObject _player;
@@ -34,6 +36,7 @@ public class SoldierAI : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _rb = GetComponent<Rigidbody>();
         _weaponController = GetComponent<EnemyWeaponController>();
         _health = GetComponent<Health>();
         _player = GameObject.FindWithTag("Player");
@@ -122,7 +125,8 @@ public class SoldierAI : MonoBehaviour
     private void SuspicionState()
     {
         _hasAlertedNearbyUnits = false;
-        _agent.SetDestination(_lastKnownPlayerPosition);
+        //_agent.SetDestination(_lastKnownPlayerPosition); // THIS
+        MoveToPosition(_lastKnownPlayerPosition);
     }
 
     private void PatrolState()
@@ -142,8 +146,16 @@ public class SoldierAI : MonoBehaviour
 
         if (_currentWaypointDwellTime > _waypointDwellTime)
         {
-            _agent.SetDestination(nextPosition);
+            //_agent.SetDestination(nextPosition); // THIS
+
+            MoveToPosition(nextPosition);
         }
+    }
+
+    private void MoveToPosition(Vector3 targetPosition)
+    {
+        Vector3 targetVelocity = (targetPosition - transform.position).normalized * _moveSpeed;
+        _rb.velocity = new Vector3(targetVelocity.x, _rb.velocity.y, targetVelocity.z);
     }
 
     // Check if there's a clear line of sight to the player
