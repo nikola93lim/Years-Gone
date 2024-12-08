@@ -5,21 +5,27 @@ public class BaseWeaponController : MonoBehaviour
 {
     [SerializeField] protected Transform _weaponSpawnTransform;
     [SerializeField] protected WeaponFactory _weaponFactory;
-    [SerializeField] protected Weapon _currentWeapon;
+    [SerializeField] protected Weapon _currentPrimaryWeapon;
+    [SerializeField] protected Weapon _currentSecondaryWeapon;
 
-    public virtual void EquipWeapon(WeaponFactory weaponFactory)
+    public virtual void EquipPrimaryWeapon(WeaponFactory weaponFactory)
     {
-        if (_currentWeapon != null)
+        if (_currentPrimaryWeapon != null)
         {
-            Destroy(_currentWeapon.gameObject);
+            Destroy(_currentPrimaryWeapon.gameObject);
         }
 
-        _currentWeapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
+        _currentPrimaryWeapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
+    }
+
+    public virtual void EquipSecondaryWeapon(WeaponFactory weaponFactory)
+    {
+        _currentSecondaryWeapon = weaponFactory.CreateWeapon(_weaponSpawnTransform);
     }
 
     protected virtual void Start()
     {
-        EquipWeapon(_weaponFactory);
+        EquipPrimaryWeapon(_weaponFactory);
     }
 }
 

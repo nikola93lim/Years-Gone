@@ -545,6 +545,7 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 1107410990671554775}
   _timeBetweenShots: 0.07
   _muzzleVelocity: 30
+  _weaponImage: {fileID: 0}
 --- !u!1001 &5686111599894480343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,6 +596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941223918874586, guid: 6745051c9fe818d489695642115ceb0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64870654230503430, guid: 6745051c9fe818d489695642115ceb0d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

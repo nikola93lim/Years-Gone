@@ -25,7 +25,7 @@ public class Projectile : Flyweight
         }*/
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         transform.Translate(Settings.MoveSpeed * Time.deltaTime * Vector3.forward);
         Callback?.Invoke();

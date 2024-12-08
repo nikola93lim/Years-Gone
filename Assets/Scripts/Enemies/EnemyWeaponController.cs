@@ -20,13 +20,13 @@ public class EnemyWeaponController : BaseWeaponController
 
     public void Shoot()
     {
-        _currentWeapon.Shoot();
+        _currentPrimaryWeapon.Shoot();
         _nextShotTime = Time.time + _timeBetweenShots;
     }
 
-    public override void EquipWeapon(WeaponFactory weaponFactory)
+    public override void EquipPrimaryWeapon(WeaponFactory weaponFactory)
     {
-        base.EquipWeapon(weaponFactory);
-        _timeBetweenShots = _currentWeapon.GetTimeBetweenShots();
+        base.EquipPrimaryWeapon(weaponFactory);
+        _timeBetweenShots = _currentPrimaryWeapon.GetTimeBetweenShots();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected MuzzleFlash _muzzleFlash;
     [SerializeField] protected float _timeBetweenShots;
     [SerializeField] protected float _muzzleVelocity;
+    [SerializeField] protected Image _weaponImage;
 
     protected bool _triggerReleasedSinceLastShot;
     protected float _nextShotTime;

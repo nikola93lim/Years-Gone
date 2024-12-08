@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class WeaponController : BaseWeaponController
 {
     private InputReader _inputReader;
+    [SerializeField] private BombSettings _bombSettings;
 
+    private bool _isThrowing;
     public Transform GunSpawnTransform {  get { return _weaponSpawnTransform; } }
 
     private void Awake()
@@ -22,22 +25,55 @@ public class WeaponController : BaseWeaponController
         {
             OnTriggerRelease();
         }
+
+        if (_inputReader.FireSecondary)
+        {
+            TryFireSecondary();
+        }
+    }
+
+    private bool TryFireSecondary()
+    {
+        if (_isThrowing) return false;
+
+        StartCoroutine(Throw());
+        return true;
     }
 
     public void OnTriggerHold()
     {
-        if (_currentWeapon != null)
+        if (_currentPrimaryWeapon != null)
         {
-            _currentWeapon.OnTriggerHold();
+            _currentPrimaryWeapon.OnTriggerHold();
         }
     }
 
     public void OnTriggerRelease()
     {
-        if (_currentWeapon != null)
+        if (_currentPrimaryWeapon != null)
         {
-            _currentWeapon.OnTriggerRelease();
+            _currentPrimaryWeapon.OnTriggerRelease();
         }
     }
 
+    private IEnumerator Throw()
+    {
+        _isThrowing = true;
+
+        float throwForce = 0f;
+
+        while (!_inputReader.FireSecondaryReleased)
+        {
+            throwForce += 5f;
+            yield return null;
+        }
+
+        throwForce = Mathf.Clamp(throwForce, 100f, 500f);
+
+        Bomb bomb = FlyweightFactory.Spawn(_bombSettings) as Bomb;
+        bomb.transform.SetPositionAndRotation(GunSpawnTransform.position, Quaternion.identity);
+        bomb.Throw(transform.forward, throwForce);
+        yield return Utility.GetWaitForSeconds(2f);
+        _isThrowing = false;
+    }
 }

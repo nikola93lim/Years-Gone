@@ -34,5 +34,7 @@ public enum FlyweightType
     ObstacleHitSound,
     BulletShootSound,
     MissileShootSound,
+    Throwable,
+    BombExplodeParticle,
 }
 
